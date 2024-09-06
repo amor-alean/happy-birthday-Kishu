@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! Kishu🎉</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @keyframes backgroundAnimation {
+            0% {
+                background-color: #ff7e5f; /* Pink */
+            }
+            50% {
+                background-color: #feb47b; /* Light Orange */
+            }
+            100% {
+                background-color: #8e44ad; /* Purple */
+            }
+        }
+
+        body {
+            animation: backgroundAnimation 10s infinite alternate;
+            color: #fff;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+        }
+
+        .video-message {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .surprise-image {
+            display: none; /* Start hidden */
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .surprise-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 0.5rem;
+        }
+
+        .heart-button {
+            font-size: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen px-4">
+    <div class="text-center mb-10">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">Happy Birthday, Kishu!🎂</h1>
+        <div id="countdown" class="text-2xl font-semibold mb-6"></div>
+    </div>
+
+    <button id="heartButton" class="heart-button bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition">❤️ Press It!</button>
+
+    <section id="love-letter" class="mb-10">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-4">A Love Letter ❤️</h2>
+        <center>
+        <p class="text-base md:text-lg mb-4">My happiness, My Kishu🎉</p>
+        </center>
+       
+        <!-- Poem Text -->
+        <div class="mt-4">  
+            <p class="text-base md:text-lg mb-4">खुली झुल्फ़ों में आज़ाद देखी है<br>
+            मैंने जी ते जी कयामत देखी है<br>
+            ये दिल अब और क्या देखे, जब<br>
+            उसकी हर एक शरारत देखी है<br>
+            वो रो पड़ती है मेरी इसी हालत पे<br>
+            मैंने खुद की और बुरी हालत देखी है<br>
+            हर कहीं बस बेचैनी ही मिली मुझे<br>
+            सिर्फ उसकी बाहों में राहत देखी है</p>  
+        </div>  
+    </center>
+    </section>
+
+    <section id="photo-gallery" class="mb-10">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-4">Our Favorite Moments 📸</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <img src="pic1.jpg" alt="Moment 1" class="gallery h-48 w-full object-cover rounded"/>
+                <p class="text-sm mt-2">loved it!</p>
+            </div>
+            <div>
+                <img src="pic2.jpg" alt="Moment 2" class="gallery h-48 w-full object-cover rounded"/>
+                <p class="text-sm mt-2">Best Pic</p>
+            </div>
+            <div>
+                <img src="pic3.jpg" alt="Moment 3" class="gallery h-48 w-full object-cover rounded"/>
+                <p class="text-sm mt-2">lovely Image</p>
+            </div>
+            <div>
+                <img src="pic4.jpg" alt="Moment 4" class="gallery h-48 w-full object-cover rounded"/>
+                <p class="text-sm mt-2">Marvelous Pic</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="video-messages" class="mb-10">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-4">A Special Video Message 🎥</h2>
+        <div class="video-message mb-4">
+            <video controls id="videoMessage">
+                <source src="video1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="text-sm mt-2">A message for your special day!</p>
+        </div>
+    </section>
+
+    <section id="interactive-features" class="mb-10">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-4">Fun Interactive Features 🎉</h2>
+        <p class="text-base md:text-lg mb-4">Take this fun quiz to see how well you know each other!</p>
+        <center>
+        <a href="quize.html" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">Start the Quiz</a>
+        </center>
+    </section>
+
+    <section id="birthday-wishes" class="mb-10">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-4">Birthday Wishes Wall 📝</h2>
+        <textarea placeholder="Leave your birthday wish here!" class="w-full h-24 mb-4 p-2 rounded"></textarea>
+        <center>
+        <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">Submit Wish</button>
+        </center>
+    </section>
+
+    <audio id="birthdaySong" src="song1.mp3" autoplay preload="auto"></audio>
+    <audio id="surpriseSong" src="tum-hi-ho-aashiqui-2-musiclinda-com-1074.mp3" preload="auto"></audio>
+    <audio id="mySong" src="mysong.mp3" preload="auto"></audio>
+
+    <button id="surpriseButton" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">Surprise for You!</button>
+    <div class="surprise-image" id="surpriseImage">
+        <img src="pic5.jpg" alt="Surprise Image"/>
+        <p class="text-lg mt-2">You are the best gift in my life! 🎁</p>
+        <p class="text-lg">May your day be filled with joy and love! ❤️</p>
+    </div>
+
+    <script>
+        // Countdown Timer
+        const countdownDate = new Date("Sep 7, 2024 00:00:00").getTime();
+        const countdownElement = document.getElementById("countdown");
+
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (distance < 0) {
+                clearInterval(timerInterval);
+                countdownElement.innerHTML = "It's your birthday! 🎉";
+            }
+        };
+
+        const timerInterval = setInterval(updateCountdown, 1000);
+
+        // Function to stop all audio
+        const stopAllAudio = () => {
+            document.getElementById("birthdaySong").pause();
+            document.getElementById("surpriseSong").pause();
+            document.getElementById("mySong").pause();
+            document.getElementById("videoMessage").pause(); // Stop video if playing
+        };
+
+        // Surprise Button Functionality
+        document.getElementById("surpriseButton").addEventListener("click", function() {
+            stopAllAudio(); // Stop all audio when surprise button is pressed
+            // Play surprise song
+            document.getElementById("surpriseSong").play();
+            // Show surprise image
+            document.getElementById("surpriseImage").style.display = "block";
+        });
+
+        // Heart Button Functionality
+        document.getElementById("heartButton").addEventListener("click", function() {
+            stopAllAudio(); // Stop all audio when heart button is pressed
+            // Play custom song
+            document.getElementById("mySong").play();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            animation: backgroundAnimation 10s ease infinite;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b, #8e44ad);
+            background-size: cover;
+            background-position: center;
+            font-family: 'Great Vibes', cursive;
+        }
+        @keyframes backgroundAnimation {
+            0% {
+                background-color: #ff7e5f; /* Pink */
+            }
+            50% {
+                background-color: #feb47b; /* Light Orange */
+            }
+            100% {
+                background-color: #8e44ad; /* Purple */
+            }
+        }
+        .heart {
+            color: red;
+            font-size: 2rem;
+        }
+        .love-meter {
+            height: 20px;
+            background-color: #ff6b81;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        .text-readable {
+            color: #333; /* Darker text for better readability */
+            font-weight: bold; /* Make text bold */
+        }
+    </style>
+</head>
+<body class="p-5">
+    <audio id="background-audio" autoplay loop>
+        <source src="song4.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+    <div class="max-w-xl mx-auto bg-transparent p-5 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold mb-5 text-center text-readable">How Well Do You Know Me?</h1>
+        <form id="quiz-form">
+            <div class="mb-4">
+                <label class="block mb-2 text-readable">1. What is Kishu's favorite song?</label>
+                <select class="border rounded p-2 w-full bg-transparent text-white" name="question1">
+                    <option value="A">A) Aawara Shaam hai</option>
+                    <option value="B">B) Tum Hi Ho</option>
+                    <option value="C">C) Tera Ban Jaunga</option>
+                    <option value="D">D) Kabira</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block mb-2 text-readable">2. What does Kishu find adorable?</label>
+                <select class="border rounded p-2 w-full bg-transparent text-white" name="question2">
+                    <option value="A">A) Cuteness</option>
+                    <option value="B">B) Kindness</option>
+                    <option value="C">C) Intelligence</option>
+                    <option value="D">D) Humor</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block mb-2 text-readable">3. Where did Kishu and you first meet?</label>
+                <select class="border rounded p-2 w-full bg-transparent text-white" name="question3">
+                    <option value="A">A) Coaching class</option>
+                    <option value="B">B) Café</option>
+                    <option value="C">C) Park</option>
+                    <option value="D">D) Library</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block mb-2 text-readable">4. What is Kishu's favorite sweet treat?</label>
+                <select class="border rounded p-2 w-full bg-transparent text-white" name="question4">
+                    <option value="A">A) Gulab Jamun</option>
+                    <option value="B">B) Jalebi</option>
+                    <option value="C">C) Rasgulla</option>
+                    <option value="D">D) Ladoo</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block mb-2 text-readable">5. When did your relationship begin?</label>
+                <select class="border rounded p-2 w-full bg-transparent text-white" name="question5">
+                    <option value="A">A) 15th March 2019</option>
+                    <option value="B">B) 12th June 2018</option>
+                    <option value="C">C) 1st January 2020</option>
+                    <option value="D">D) 25th December 2019</option>
+                </select>
+            </div>
+           
+            <button type="submit" class="bg-blue-500 text-white rounded p-2">Submit Answers</button>
+       
+        </form>
+        <div id="result" class="mt-5 hidden">
+            <div id="hearts" class="heart"></div>
+            <div class="love-meter-container mt-3">
+                <div id="love-meter" class="love-meter" style="width: 0%;"></div>
+            </div>
+            <div id="message" class="mt-3 text-lg font-semibold text-readable"></div>
+            <button id="retry" class="bg-blue-500 text-white rounded p-2 hidden">Choose Correct My Love</button>
+        </div>
+    </div>
+    <script>
+        const correctAnswers = ['A', 'A', 'A', 'A', 'B']; // Correct answers
+        const form = document.getElementById('quiz-form');
+        const resultDiv = document.getElementById('result');
+        const heartsDiv = document.getElementById('hearts');
+        const messageDiv = document.getElementById('message');
+        const retryButton = document.getElementById('retry');
+        const loveMeter = document.getElementById('love-meter');
+        const backgroundAudio = document.getElementById('background-audio');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            backgroundAudio.pause(); // Stop the song on submit
+            let score = 0;
+            const formData = new FormData(form);
+            for (let i = 1; i <= correctAnswers.length; i++) {
+                if (formData.get(`question${i}`) === correctAnswers[i - 1]) {
+                    score++;
+                }
+            }
+            heartsDiv.innerHTML = '❤️'.repeat(score);
+            loveMeter.style.width = `${(score / correctAnswers.length) * 100}%`;
+            if (score === correctAnswers.length) {
+                messageDiv.innerHTML = "Happy Birthday, my love! You know me so well!";
+                retryButton.classList.add('hidden');
+            } else {
+                messageDiv.innerHTML = "Not quite right, but I love you anyway!";
+                retryButton.classList.remove('hidden');
+            }
+            resultDiv.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
